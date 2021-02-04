@@ -9,5 +9,8 @@ import "channels";
 import "../stylesheets/application.scss";
 
 Rails.start();
-var componentRequireContext = require.context("src", true);
 ActiveStorage.start();
+// Support component names relative to this directory:
+var componentRequireContext = require.context("components", true);
+var ReactRailsUJS = require("react_ujs");
+ReactRailsUJS.useContext(componentRequireContext);
