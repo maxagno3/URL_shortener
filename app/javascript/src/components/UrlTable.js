@@ -1,7 +1,7 @@
 import React from "react";
 import SingleUrl from "./SingleUrl";
 
-const UrlTable = ({ showUrl, handlePinned }) => {
+const UrlTable = ({ showUrl, handlePinned, updateCount }) => {
   return (
     <section className="my-4 w-4/6 p-4 my-0 mx-auto">
       <div>
@@ -12,7 +12,12 @@ const UrlTable = ({ showUrl, handlePinned }) => {
           </li>
           {showUrl?.map(url => {
             return (
-              <SingleUrl url={url} key={url.id} handlePinned={handlePinned} />
+              <SingleUrl
+                url={url}
+                key={url.id}
+                handlePinned={handlePinned}
+                updateCount={updateCount}
+              />
             );
           })}
         </ul>

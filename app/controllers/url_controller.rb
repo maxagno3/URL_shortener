@@ -1,6 +1,6 @@
 class UrlController < ApplicationController
   protect_from_forgery
-  before_action :find_url, only: [:update]
+  before_action :find_url, only: [:update, :show]
 
   def index
     url = Url.order(updated_at: :desc )
@@ -25,6 +25,11 @@ class UrlController < ApplicationController
     end
   end
 
+  def show
+    update_count
+    render :ok, json: { url: @url }
+  end
+
   private
   
     def url_params
@@ -33,5 +38,9 @@ class UrlController < ApplicationController
 
     def find_url
       @url = Url.find(params[:id])
+    end
+
+    def update_count
+      @url.increment!(:count)
     end
 end

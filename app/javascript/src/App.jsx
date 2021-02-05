@@ -18,6 +18,16 @@ const App = () => {
     }
   };
 
+  const updateCount = async id => {
+    try {
+      await urlApi.show({ id });
+      window.location.href = "/";
+      setUrl("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handlePinned = async (id, url, pinned) => {
     try {
       await urlApi.update({
@@ -46,7 +56,11 @@ const App = () => {
   return (
     <>
       <Input handleSubmit={handleSubmit} url={url} setUrl={setUrl} />
-      <UrlTable showUrl={showUrl} handlePinned={handlePinned} />
+      <UrlTable
+        showUrl={showUrl}
+        handlePinned={handlePinned}
+        updateCount={updateCount}
+      />
     </>
   );
 };

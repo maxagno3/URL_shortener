@@ -1,6 +1,6 @@
 import React from "react";
 
-function SingleUrl({ url, handlePinned }) {
+function SingleUrl({ url, handlePinned, updateCount }) {
   return (
     <li className="bg-white mb-px">
       <article className="flex justify-between">
@@ -44,6 +44,7 @@ function SingleUrl({ url, handlePinned }) {
             className="p-4 hover:underline text-gray-800 break-all"
             target="_blank"
             rel="noreferrer"
+            onClick={() => updateCount(url.id)}
           >
             {window.location.origin + `/${url.slug}`}
           </a>
